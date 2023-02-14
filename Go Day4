@@ -1,0 +1,31 @@
+By default maps and slices are passed by reference.
+
+	package main
+
+	import "fmt"
+
+	func solve(x map[string]int) map[string]int {
+
+		x["rithika"] = 0
+
+		return x
+	}
+
+	func main() {
+
+		m := make(map[string]int)
+		m = map[string]int{
+			"rithika": 1292,
+			"sravya":  1286,
+		}
+		fmt.Println(solve(m))
+		fmt.Println(m)
+		ans := m
+		ans["rithika"] = 1292
+		fmt.Println(m)
+
+	}
+OUTPUT: map[rithika:0 sravya:1286]
+	map[rithika:0 sravya:1286]
+	map[rithika:1292 sravya:1286]
+Even if we try to copy this into another variable,and try to modify only the new variable,it is not going to work,it will modify the map that it copied.I.e,all these are referring to the same memory locations,so changes will be done at all places wherever we are using the map(As all are referring to same memory loaction).As they have internal pointers,changes made using one variable can be seen throughout the program.
