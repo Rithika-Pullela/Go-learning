@@ -1,0 +1,8 @@
+Context provides a way to pass context-specific info(such as deadlines,cancellations and request-scoped values) across function boundaries.
+
+CONTEXT USE CASES:
+1)When a function has a long-running operation,then we cannot let it run for more time as it increases the load and decreases the performance.So at some point we need to tell that specific operation (or we can say goroutine which is performing that task)to stop and return.This can be easily done using context package.
+2)In server application,we need to pass request ID,user authentication details and other details acreoss multiplt layers of application.This can also be done using context package.
+3)Parallelism and synchronization can be achieved through context by passing the cancellation and other signals to varioius functions.
+4)Context is very helpful in tracing an debugging.It stores the values at function boundaries,which can be helpful in tracing the execution flow of oour application.
+

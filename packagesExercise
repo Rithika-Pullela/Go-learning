@@ -1,0 +1,24 @@
+-SELECTING MINIMAL VERSION IN DEPENDENCY MANAGEMENT
+
+We need to specify the minimal version in our module's go.mod file.We actually need to specify the version range in go.mod file.So that when we run go.get command it downloads latest version based on the range we specified in go.mod file.
+We should not upgrade to newer versions if it is not really needed,as we may face comaptability issues.
+
+
+-HOW DO YOU UPGRADE A PACKAGE??
+
+go get -u packageName command will upgrade to the latest version  (or) go get packageName@version  
+ version-version to which you want to upgrade
+
+-go.mod AND go.sum FILES PURPOSE??
+
+go.mod is the main module for go project which has module name,version and the required dependencies.Ensures correct versions of dependencies are used,we can upgrade the versions too,to ensure compatibitly.
+
+go.sum is generated automatically by Go module system when a dependendcy is installed or upgraded.
+It contains following things,
+1)cryptographic checksums for each dependency
+2)version number and
+3)download URL for each dependency.
+It ensures whether the downloaded dependencies have the versions specified in go.mod file by matching the checksum values that are generated using hashing algorithm.
+It also provides security.When an attacker tries to modify dependency,then go.sum stops the download process by recognizing that it's a malicious one.As the checksum doesn't match it will stop the downloading process.
+Thus go.sum ensures integrity and security of our project's dependencies.
+
